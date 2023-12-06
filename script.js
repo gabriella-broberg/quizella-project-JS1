@@ -1,8 +1,7 @@
 const questions = [
-
   {
     question: "Vilka av följande är operativsystem? (du kan välja fler)",
-    type: "checkbox", 
+    type: "checkbox",
     answers: [
       { text: "Windows", correct: true },
       { text: "Linux", correct: true },
@@ -32,7 +31,7 @@ const questions = [
     type: "multipleChoice",
     answers: [
       { text: "Microsoft", correct: false },
-      { text: "Oracle", correct: false},
+      { text: "Oracle", correct: false },
       { text: "Google", correct: false },
       { text: "Netscape", correct: true },
     ],
@@ -75,7 +74,19 @@ const questions = [
     answers: [
       { text: "Sant", correct: false },
       { text: "Falskt", correct: true },
-
+    ],
+  },
+  {
+    question: "Vilka av följande är frontend-ramverk eller bibliotek?",
+    type: "checkbox",
+    answers: [
+      { text: "React", correct: true },
+      { text: "Express", correct: false },
+      { text: "Django", correct: false },
+      {
+        text: "Vue",
+        correct: true,
+      },
     ],
   },
   {
@@ -85,39 +96,29 @@ const questions = [
       { text: "Skickar ändringar till det lokala arkivet", correct: false },
       { text: "Skapar en ny gren", correct: false },
       { text: "Tar bort den nuvarande grenen", correct: false },
-      { text: "Hämtar och integrerar ändringar från ett fjärrarkiv", correct: true },
+      {
+        text: "Hämtar och integrerar ändringar från ett fjärrarkiv",
+        correct: true,
+      },
     ],
   },
-  {
-    question: "Which is the smallest continent in the world?",
-    type: "multipleChoice",
-    answers: [
-      { text: "Asia", correct: false },
-      { text: "Australia", correct: true },
-      { text: "Arctic", correct: false },
-      { text: "Afrika", correct: false },
-    ],
-  },
-
-
 ];
+
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
+const answerCheckbox = document.getElementById("answerCheckbox");
 
-//Store the question index and score
-
-let currentQuestionIndex = 0; //Index will start from 0
+let currentQuestionIndex = 0;
 let score = 0;
 
-//When starting the quiz it will restart with 0
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
   nextButton.innerHTML = "Next";
-  resetState(); // Lägg till resetState här för att återställa färgen på frågan
-  showQuestion(); //set the scoe 0 and set the text next in the button
+  resetState();
+  showQuestion();
 }
 
 function showQuestion() {
@@ -126,55 +127,124 @@ function showQuestion() {
   let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-  currentQuestion.answers.forEach((answer) => {
+  answerCheckbox.innerHTML = '';
 
+  if (currentQuestion.type === "checkbox") {
+    currentQuestion.answers.forEach((answer) => {
+      const checkboxLabel = document.createElement("label");
+      checkboxLabel.innerHTML = `
+        <input type="checkbox" name="${answer.text}" value="${answer.text}"> ${answer.text}
+      `;
+      answerCheckbox.appendChild(checkboxLabel);
+    });
 
-    // if type === checkbox take answers and display with checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("input", selectAnswer);
+    });
 
-
-    //else 
-    
-    //take answers and display in button
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    answerButtons.appendChild(button);
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-  });
+  } else {
+    currentQuestion.answers.forEach((answer) => {
+      const button = document.createElement("button");
+      button.innerHTML = answer.text;
+      button.classList.add("btn");
+      answerButtons.appendChild(button);
+      if (answer.correct) {
+        button.dataset.correct = answer.correct;
+      }
+      button.addEventListener("click", selectAnswer);
+    });
+  }
 }
 
-
-
 function resetState() {
-  questionElement.style.color = ""; // Återställ färgen till standard
+  questionElement.style.color = "";
   nextButton.style.display = "none";
   while (answerButtons.firstChild) {
     answerButtons.removeChild(answerButtons.firstChild);
+  }
 }
 
-}
+function selectAnswer(e) {
+  const selectedElement = e.target;
 
-function selectAnswer(e) { // Here i want to  make the selectedCheckbox also count score if true 
+  if (selectedElement.tagName === 'INPUT' && selectedElement.type === 'checkbox') {
+    const isCorrect = selectedElement.checked;
+    const answerText = selectedElement.value;
 
-  const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
-  if (isCorrect) {
-    selectedBtn.classList.add("correct");
-    score++;
-  } else {
-    selectedBtn.classList.add("incorrect");
-  }   //Here i want for each checkbox if its true it adds classname correc
-  Array.from(answerButtons.children).forEach((button) => { //for each button it check the dataset if its true it adds classname correct
-    if (button.dataset.correct === "true") {
-      button.classList.add("correct");
+    const selectedAnswer = questions[currentQuestionIndex].answers.find(answer => answer.text === answerText);
+
+    if (isCorrect && selectedAnswer.correct) {
+      selectedElement.classList.add("correct");
+    } else {
+      selectedElement.classList.add("incorrect");
     }
-    button.disabled = true;
-  });
+
+    // Kolla om det är sista checkboxen och om alla är korrekta
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const lastCheckbox = checkboxes[checkboxes.length - 1];
+    if (selectedElement === lastCheckbox) {
+      const selectedCheckboxAnswers = getSelectedCheckboxAnswers();
+      const allCorrect = selectedCheckboxAnswers.every(answer => answer.correct);
+
+      if (allCorrect) {
+        score++;
+      }
+    }
+  } else {
+    // Hantera befintlig logik för knappar
+    const isCorrect = selectedElement.dataset.correct === "true";
+
+    if (isCorrect) {
+      selectedElement.classList.add("correct");
+      score++;
+    } else {
+      selectedElement.classList.add("incorrect");
+    }
+
+    Array.from(answerButtons.children).forEach((button) => {
+      button.disabled = true;
+    });
+  }
+
+  console.log('Current Score:', score);
   nextButton.style.display = "block";
 }
+
+
+function handleNextButton() {
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+}
+
+
+function getSelectedCheckboxAnswers() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  const selectedAnswers = [];
+
+  checkboxes.forEach((checkbox) => {
+    const answerText = checkbox.value;
+
+    // Kolla om det finns fler frågor
+    if (currentQuestionIndex < questions.length) {
+      const selectedAnswer = questions[currentQuestionIndex].answers.find(answer => answer.text === answerText);
+      selectedAnswers.push(selectedAnswer);
+    }
+  });
+
+  // Ta bort dubbletter från de valda svaren baserat på texten
+  const uniqueSelectedAnswers = Array.from(new Set(selectedAnswers.map(answer => answer.text)))
+    .map(text => selectedAnswers.find(answer => answer.text === text));
+
+  return uniqueSelectedAnswers;
+}
+
+
 
 function showScore() {
   resetState();
@@ -203,25 +273,12 @@ function showScore() {
   nextButton.style.display = "block";
 }
 
-
-
-
-function handleNextButton(){
-    currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
-        showQuestion();
-    } else {
-        showScore();
-    }
-}
-
-
-nextButton.addEventListener("click", () =>{
-    if(currentQuestionIndex < questions.length){
-        handleNextButton();
-    } else {
-        startQuiz();
-    }
-})
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
+  }
+});
 
 startQuiz();

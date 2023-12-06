@@ -7,6 +7,7 @@
 
 body {
     background-image: url("/images/pink-fire.jpg");
+    color: #fff;
     
 }
 
@@ -82,6 +83,15 @@ body {
     display: none;
 }
 
+#answerCheckbox {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #answerCheckbox label {
+    margin-bottom: 6px; /* avståndet mellan checkboxarna */
+  }
+
 .correct{
     background: #7FFF7F;
 }
@@ -115,3 +125,4 @@ body {
       0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
     }
   }
+
