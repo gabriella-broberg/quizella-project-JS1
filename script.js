@@ -131,11 +131,31 @@ function resetState() {
 
 
 
-function showScore(){
-    resetState();
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
+function showScore() {
+  resetState();
+  const totalQuestions = questions.length;
+  const percentage = (score / totalQuestions) * 100;
+
+  let resultText = `Du klarade ${score} av ${totalQuestions} frågor! `;
+  let resultClass = "";
+
+  if (percentage < 50) {
+    resultText += "Underkänt :( !";
+    resultClass = "red";
+  } else if (percentage >= 50 && percentage <= 75) {
+    resultText += "Bra :)";
+    resultClass = "orange";
+  } else {
+    resultText += "Riktigt bra jobbat :D";
+    resultClass = "green";
+  }
+
+  questionElement.innerHTML = resultText;
+  questionElement.style.color = resultClass;
+  questionElement.classList.add(resultClass);
+
+  nextButton.innerHTML = "Play Again";
+  nextButton.style.display = "block";
 }
 
 let selectedAnswers = [];
