@@ -61,8 +61,8 @@ body {
 
 }
 
-.btn:hover:not([disabled]) {
-    background: #751150;
+#next-btn:hover {
+    background: #222;
     color: #fff;
 }
 
@@ -92,14 +92,6 @@ body {
     margin-bottom: 6px; /* avståndet mellan checkboxarna */
   }
 
-.correct{
-    background: #7FFF7F;
-}
-
-.incorrect{
-    background: #222;
-    color: #fff;
-}
 
 
 :root {

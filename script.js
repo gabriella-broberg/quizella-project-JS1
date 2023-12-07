@@ -152,6 +152,7 @@ function showScore() {
     resultClass = "green";
   }
 
+
   questionElement.innerHTML = resultText;
   questionElement.style.color = resultClass;
   questionElement.classList.add(resultClass);
