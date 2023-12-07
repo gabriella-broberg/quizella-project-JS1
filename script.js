@@ -152,6 +152,7 @@ function showScore() {
     resultClass = "green";
   }
 
+// here we need to add the right answers 
 
   questionElement.innerHTML = resultText;
   questionElement.style.color = resultClass;
