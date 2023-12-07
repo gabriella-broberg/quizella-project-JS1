@@ -100,6 +100,8 @@ function showQuestion() {
 
 function resetState() {
   nextButton.style.display = "none";
+  questionElement.style.color = ""; // Reset text color
+
   while (answerCheckboxes.firstChild) {
     answerCheckboxes.removeChild(answerCheckboxes.firstChild);
   }
