@@ -56,6 +56,9 @@ const nextButton = document.getElementById("next-btn");
 let currentQuestionIndex = 0; //Index will start from 0
 let score = 0;
 
+let selectedAnswers = [];
+let userResponses = [];
+
 //When starting the quiz it will restart with 0
 function startQuiz() {
   currentQuestionIndex = 0;
@@ -157,8 +160,7 @@ function showScore() {
 }
 
 
-let selectedAnswers = [];
-let userResponses = [];
+
 
 function selectAnswer(e) {
   const selectedCheckbox = e.target;
