@@ -152,15 +152,18 @@ function showScore() {
     resultClass = "green";
   }
 
-// here we need to add the right answers 
+  //Make the function here 
+  
 
-  questionElement.innerHTML = resultText;
-  questionElement.style.color = resultClass;
-  questionElement.classList.add(resultClass);
+  //-------------------------
+  document.getElementById("question").innerHTML = resultText;
+  document.getElementById("question").style.color = resultClass;
+  document.getElementById("question").classList.add(resultClass);
 
   nextButton.innerHTML = "Play Again";
   nextButton.style.display = "block";
 }
+
 
 let selectedAnswers = [];
 
