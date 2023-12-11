@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     font-family: Poppins, sans-serif;
-    font-size: 20px;
     box-sizing: border-box;
 }
 
@@ -12,6 +11,20 @@ body {
     
 }
 
+
+body.light-mode .app {
+  background: rgba(255, 255, 255, 0.8);
+  color: #751150;
+  /* Add any other light mode styles for .app here */
+}
+
+body.light-mode .app h1 {
+  color: #751150; /* Adjust the color for h1 in light mode */
+}
+
+body.light-mode .app h2 {
+  color: #751150 /* Adjust the color for h2 in light mode */
+}
 
 
 
@@ -25,13 +38,14 @@ body {
     border-radius: 50px;
     padding: 30px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  
 
 }
 
 
 .app h1{
     font-size: 50px;
-    color: #fff;
+    color: #ffd8c5;
     font-weight: 600;
     border-bottom: 1px solid #fff;
     padding-bottom: 30px;
@@ -50,25 +64,29 @@ body {
     padding-bottom: 20px;
 }
 
-.btn {
-    background: #fff;
-    color: #222;
-    font-weight: 500;
-    width: 100%;
-    border: 1px solid #222;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
 
+
+#toggle-mode-btn {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-left: 70%; /* Push the button to the right */
+}
+
+#toggle-mode-btn:hover {
+  background: linear-gradient(to right, #ff5e62, #ff9966);
 }
 
 
 
+
+
 #next-btn:hover {
-    background: #222;
+    background:#590b40;
     color: #fff;
 }
 
@@ -85,6 +103,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     display: none;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 
@@ -102,7 +121,7 @@ body {
 
 
 :root {
-    --shadow-color: #FF9E9E;
+    --shadow-color: #ffffff;
     --shadow-color-light: white;
   }
   
@@ -167,7 +186,18 @@ body {
 
 /* Add styles for the feedback container */
 #feedback-container {
-  padding: 0px;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
+  
 
 }
 
@@ -182,4 +212,25 @@ body {
 
 .green {
   color: green;
+}
+
+
+
+.result-container {
+  font-size: 12px;
+ 
+}
+
+.result-item {
+  margin-bottom: 10px;
+
+}
+
+.correct {
+  color: green;
+
+}
+
+.incorrect {
+  color: red;
 }

@@ -1,55 +1,114 @@
 const questions = [
+
   {
-    question: "Which is the largest animal in the world?",
+    question: "Vilka av följande är operativsystem? (du kan välja fler)",
+    type: "checkbox", 
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
-    ],
-  },
-  {
-    question: "Which is the smallest country in the world?",
-    answers: [
-      { text: "Vatican City", correct: true },
-      { text: "Bhutan", correct: false },
-      { text: "Nepal", correct: false },
-      { text: "Shri Lanka", correct: false },
-    ],
-  },
-  {
-    question: "Which is the largest desert in the world?",
-    answers: [
-      { text: "Kalahari", correct: false },
-      { text: "Gobi", correct: false},
-      { text: "Sahara", correct: false },
-      { text: "Antarctica", correct: true },
-    ],
-  },
-  {
-    question: "Which are countries?",
-    answers: [
-      { text: "Brazil", correct: true },
-      { text: "Australia", correct: true },
-      { text: "pear", correct: false },
-      { text: "bike", correct: false },
+      { text: "Windows", correct: true },
+      { text: "Linux", correct: true },
+      { text: "Chrome", correct: false },
+      { text: "iOS", correct: true },
     ],
   },
 
   {
-    question: "Which are Animals?",
+    question: "HTML är ett programmeringsspråk.",
+    type: "trueFalse",
     answers: [
-      { text: "Kiwi", correct: false },
-      { text: "Horse", correct: true },
-      { text: "Dog", correct: true },
-      { text: "bike", correct: false },
+      { text: "Sant", correct: false },
+      { text: "Falskt", correct: true },
     ],
   },
+  {
+    question: "Git används för versionshantering av kod.",
+    type: "trueFalse",
+    answers: [
+      { text: "Sant", correct: true },
+      { text: "Falskt", correct: false },
+    ],
+  },
+  {
+    question: "Vilket företag utvecklade JavaScript?",
+    type: "multipleChoice",
+    answers: [
+      { text: "Microsoft", correct: false },
+      { text: "Oracle", correct: false},
+      { text: "Google", correct: false },
+      { text: "Netscape", correct: true },
+    ],
+  },
+  {
+    question: "Vad är DOM i JavaScript?",
+    type: "multipleChoice",
+    answers: [
+      { text: "Data Output Management", correct: false },
+      { text: "Document Object Model", correct: true },
+      { text: "Digital Object Model", correct: false },
+      { text: "Dynamic Output Method", correct: false },
+    ],
+  },
+
+  {
+    question: "Vilket av följande är ett programmeringsspråk?",
+    type: "multipleChoice",
+    answers: [
+      { text: "brailleScript", correct: false },
+      { text: "JavaScript", correct: true },
+      { text: "HTML", correct: false },
+      { text: "CSS", correct: false },
+    ],
+  },
+
+  {
+    question: "Vilken funktion används för att skriva ut text i JavaScript?",
+    type: "multipleChoice",
+    answers: [
+      { text: "print", correct: false },
+      { text: "write", correct: false },
+      { text: "console.log", correct: true },
+      { text: "output", correct: false },
+    ],
+  },
+  {
+    question: "CSS står för 'Central Style Sheet'.",
+    type: "multipleChoice",
+    answers: [
+      { text: "Sant", correct: false },
+      { text: "Falskt", correct: true },
+
+    ],
+  },
+  {
+    question: "Vad gör kommandot 'git pull?",
+    type: "multipleChoice",
+    answers: [
+      { text: "Skickar ändringar till det lokala arkivet", correct: false },
+      { text: "Skapar en ny gren", correct: false },
+      { text: "Tar bort den nuvarande grenen", correct: false },
+      { text: "Hämtar och integrerar ändringar från ett fjärrarkiv", correct: true },
+    ],
+  },
+  {
+    question: "Vad gör funktionen 'map' i JavaScript?",
+    type: "multipleChoice",
+    answers: [
+      { text: "Lägger till ett nytt element i en array", correct: false },
+      { text: "Tar bort ett element från en array", correct: false },
+      { text: "Itererar över varje element i en array och tillämpar en funktion", correct: true },
+      { text: "Sorterar elementen i en array i stigande ordning", correct: false },
+    ],
+  }
+  
+
+
 ];
 
 const questionElement = document.getElementById("question");
 const answerCheckboxes = document.getElementById("answer-checkboxes");
 const nextButton = document.getElementById("next-btn");
+
+
+
 
 //Store the question index and score
 
@@ -66,8 +125,17 @@ function startQuiz() {
   selectedAnswers = []; // Reset selected answers
   userResponses = []; // Reset user responses
   nextButton.innerHTML = "Next";
+
+  // Clear the content of the feedback-container
+  const feedbackContainer = document.getElementById("feedback-container");
+  feedbackContainer.innerHTML = "";
+  // Hide the feedback container initially
+  document.getElementById("feedback-container").style.display = "none";
+
+
   showQuestion();
 }
+
 
 function showQuestion() {
   resetState();
@@ -104,12 +172,13 @@ function showQuestion() {
 
 
 function resetState() {
+  
   nextButton.style.display = "none";
   questionElement.style.color = ""; // Reset text color
-
   while (answerCheckboxes.firstChild) {
     answerCheckboxes.removeChild(answerCheckboxes.firstChild);
   }
+  
 }
 
 
@@ -123,6 +192,7 @@ function showScore() {
   let resultText = `You got ${score} out of ${totalQuestions} questions right!`;
   let resultClass = "";
 
+
     // Determine result class based on the percentage
     if (percentage < 50) {
       resultText += "<br>Underkänt :( !";
@@ -134,24 +204,38 @@ function showScore() {
       resultText += "<br>Riktigt bra jobbat :D";
       resultClass = "green";
     }
-  console.log(userResponses);
+
+  // Show the feedback container
+  document.getElementById("feedback-container").style.display = "block";
+
+  const resultContainer = document.createElement('div');
+  resultContainer.classList.add('result-container');
 
   // Display correct/incorrect information for each question
   userResponses.forEach((response, index) => {
-    console.log(response);
-    resultText += `<br>${index + 1}: ${response.correct ? 'Correct' : 'Incorrect'}`;
-    
+    const resultItem = document.createElement('div');
+    resultItem.classList.add('result-item');
+
+    resultItem.innerHTML = `<br>${index + 1}: <span style="color: ${response.correct ? 'green' : 'red'}">${response.correct ? 'Rätt' : 'Fel'}</span>`;
+
+
     // Display the selected answers
     if (response.userSelections.length > 0) {
-      resultText += `<br>Your Answers: ${response.userSelections.join(', ')}`;
+      resultItem.innerHTML += `<br>Du svarade: ${response.userSelections.join(', ')}`;
     }
 
     // Display the correct answers
-    resultText += `<br>Correct Answers: ${questions[index].answers
+    resultItem.innerHTML += `<br>Korrekt: ${questions[index].answers
       .filter(answer => answer.correct)
       .map(answer => answer.text)
       .join(', ')}`;
+
+    resultContainer.appendChild(resultItem);
   });
+
+  document.getElementById("feedback-container").appendChild(resultContainer);
+
+
 
 
 
@@ -226,3 +310,14 @@ nextButton.addEventListener("click", () =>{
 })
 
 startQuiz();
+
+const toggleModeBtn = document.getElementById("toggle-mode-btn");
+const body = document.body;
+
+toggleModeBtn.addEventListener("click", toggleMode);
+
+function toggleMode() {
+  body.classList.toggle("light-mode");
+}
+
+
