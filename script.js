@@ -60,8 +60,10 @@ let score = 0;
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
+  selectedAnswers = []; // Reset selected answers
+  userResponses = []; // Reset user responses
   nextButton.innerHTML = "Next";
-  showQuestion(); //set the scoe 0 and set the text next in the button
+  showQuestion();
 }
 
 function showQuestion() {
@@ -107,29 +109,6 @@ function resetState() {
   }
 }
 
-/*function selectAnswer(e) {
-  const selectedCheckbox = e.target;
-  const isCorrect = selectedCheckbox.dataset.correct === "true";
-
-  if (selectedCheckbox.checked) {
-    if (isCorrect) {
-      selectedCheckbox.classList.add("correct");
-      score++;
-    } else {
-      selectedCheckbox.classList.add("incorrect");
-    }
-  } else {
-    selectedCheckbox.classList.remove("correct", "incorrect");
-  }
-
-
-
-  Array.from(answerCheckboxes.querySelectorAll('.checkbox')).forEach((checkbox) => {
-    //checkbox.disabled = true;
-  });
-
-  nextButton.style.display = "block";
-} */
 
 
 
@@ -138,24 +117,37 @@ function showScore() {
   const totalQuestions = questions.length;
   const percentage = (score / totalQuestions) * 100;
 
-  let resultText = `Du klarade ${score} av ${totalQuestions} frågor! `;
+  let resultText = `You got ${score} out of ${totalQuestions} questions right!`;
   let resultClass = "";
 
+  // Display correct/incorrect information for each question
+  userResponses.forEach((response, index) => {
+    resultText += `<br>${index + 1}: ${response.correct ? 'Correct' : 'Incorrect'}`;
+    
+    // Display the selected answers
+    if (response.userSelections.length > 0) {
+      resultText += `<br>Your Answers: ${response.userSelections.join(', ')}`;
+    }
+
+    // Display the correct answers
+    resultText += `<br>Correct Answers: ${questions[index].answers
+      .filter(answer => answer.correct)
+      .map(answer => answer.text)
+      .join(', ')}`;
+  });
+
+  // Determine result class based on the percentage
   if (percentage < 50) {
-    resultText += "Underkänt :( !";
+    resultText += "<br>Underkänt :( !";
     resultClass = "red";
   } else if (percentage >= 50 && percentage <= 75) {
-    resultText += "Bra :)";
+    resultText += "<br>Bra :)";
     resultClass = "orange";
   } else {
-    resultText += "Riktigt bra jobbat :D";
+    resultText += "<br>Riktigt bra jobbat :D";
     resultClass = "green";
   }
 
-  //Make the function here 
-  
-
-  //-------------------------
   document.getElementById("question").innerHTML = resultText;
   document.getElementById("question").style.color = resultClass;
   document.getElementById("question").classList.add(resultClass);
@@ -166,6 +158,7 @@ function showScore() {
 
 
 let selectedAnswers = [];
+let userResponses = [];
 
 function selectAnswer(e) {
   const selectedCheckbox = e.target;
@@ -202,6 +195,12 @@ function handleNextButton() {
   } else {
     showScore();
   }
+
+  userResponses.push({ 
+    question: currentQuestion.question,
+    userSelections: selectedAnswers,
+    correct: allCorrectSelected,
+  });
 
   // Reset selected answers for the next question
   selectedAnswers = [];
