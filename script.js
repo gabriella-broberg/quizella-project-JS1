@@ -189,7 +189,7 @@ function showScore() {
   const totalQuestions = questions.length;
   const percentage = (score / totalQuestions) * 100;
 
-  let resultText = `You got ${score} out of ${totalQuestions} questions right!`;
+  let resultText = `Du fick ${score} rätt av ${totalQuestions}!`;
   let resultClass = "";
 
 
@@ -243,7 +243,7 @@ function showScore() {
   document.getElementById("question").style.color = resultClass;
   document.getElementById("question").classList.add(resultClass);
 
-  nextButton.innerHTML = "Play Again";
+  nextButton.innerHTML = "Spela igen!";
   nextButton.style.display = "block";
 }
 

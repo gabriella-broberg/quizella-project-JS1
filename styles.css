@@ -13,7 +13,7 @@ body {
 
 
 body.light-mode .app {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   color: #751150;
   /* Add any other light mode styles for .app here */
 }
@@ -30,12 +30,12 @@ body.light-mode .app h2 {
 
 
 .app{
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(6px);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
-    border-radius: 50px;
+    border-radius: 9px;
     padding: 30px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
   
@@ -47,7 +47,7 @@ body.light-mode .app h2 {
     font-size: 50px;
     color: #ffd8c5;
     font-weight: 600;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid  #ffd8c5;
     padding-bottom: 30px;
     animation: neon 3s infinite;
 }
