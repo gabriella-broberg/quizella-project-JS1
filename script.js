@@ -123,8 +123,22 @@ function showScore() {
   let resultText = `You got ${score} out of ${totalQuestions} questions right!`;
   let resultClass = "";
 
+    // Determine result class based on the percentage
+    if (percentage < 50) {
+      resultText += "<br>Underkänt :( !";
+      resultClass = "red";
+    } else if (percentage >= 50 && percentage <= 75) {
+      resultText += "<br>Bra :)";
+      resultClass = "orange";
+    } else {
+      resultText += "<br>Riktigt bra jobbat :D";
+      resultClass = "green";
+    }
+  console.log(userResponses);
+
   // Display correct/incorrect information for each question
   userResponses.forEach((response, index) => {
+    console.log(response);
     resultText += `<br>${index + 1}: ${response.correct ? 'Correct' : 'Incorrect'}`;
     
     // Display the selected answers
@@ -139,17 +153,7 @@ function showScore() {
       .join(', ')}`;
   });
 
-  // Determine result class based on the percentage
-  if (percentage < 50) {
-    resultText += "<br>Underkänt :( !";
-    resultClass = "red";
-  } else if (percentage >= 50 && percentage <= 75) {
-    resultText += "<br>Bra :)";
-    resultClass = "orange";
-  } else {
-    resultText += "<br>Riktigt bra jobbat :D";
-    resultClass = "green";
-  }
+
 
   document.getElementById("question").innerHTML = resultText;
   document.getElementById("question").style.color = resultClass;
@@ -191,6 +195,13 @@ function handleNextButton() {
   }
   console.log(score); // Log the score after each question
 
+
+  userResponses.push({ 
+    question: currentQuestion.question,
+    userSelections: selectedAnswers,
+    correct: allCorrectSelected,
+  });
+
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
@@ -198,11 +209,7 @@ function handleNextButton() {
     showScore();
   }
 
-  userResponses.push({ 
-    question: currentQuestion.question,
-    userSelections: selectedAnswers,
-    correct: allCorrectSelected,
-  });
+
 
   // Reset selected answers for the next question
   selectedAnswers = [];
