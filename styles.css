@@ -259,11 +259,13 @@ body.light-mode .app h2 {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
+    height: 88vh;
   }
 
   body.light-mode {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
+    height: 88vh;
   }
 }
