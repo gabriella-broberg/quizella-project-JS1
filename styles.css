@@ -12,7 +12,7 @@ html,body{
 body {
     background-image: url("/images/pink-fire.jpg");
     background-size: auto; /* Set background image to cover */
-    background-position: right; /* Center the background image */
+    background-position: left; /* Center the background image */
     color: #fff;
     
 }
@@ -21,13 +21,13 @@ body {
 body.light-mode {
   background-image: url("/images/pink-fire.jpg");
   background-size: auto; /* Set background image to cover */
-  background-position: right; /* Center the background image */
+  background-position: left; /* Center the background image */
   color: #fff;
   
 }
 
 body.light-mode .app {
-  background: rgba(255, 255, 255, 0.844);
+  background: rgba(255, 255, 255, 0.693);
   color: #2c1624;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   
@@ -47,7 +47,7 @@ body.light-mode .app h2 {
 
 
 .app{
-    background: rgba(0, 0, 0, 0.41);
+    background: rgba(18, 0, 4, 0.474);
     backdrop-filter: blur(6px);
     width: 90%;
     max-width: 600px;
@@ -102,12 +102,8 @@ body.light-mode .app h2 {
 
 
 
-
-
-
-
 #next-btn {
-    background: #ff5e6192;
+    background: #ff5e61a9;
     color: #fff;
     font-weight: 500;
     width: 150px;
