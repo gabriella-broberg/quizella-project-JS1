@@ -257,13 +257,28 @@ body.light-mode .app h2 {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
-    height: 80vh;
+    height: 100vh;
   }
 
   body.light-mode {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
-    height: 80vh;
+    height: 100vh;
   }
+
+  .app{
+    background: rgba(0, 0, 0, 0.413);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  
+
+}
+
+  
 }
