@@ -19,7 +19,7 @@ body.light-mode .app {
 }
 
 body.light-mode .app h1 {
-  color: #751150; /* Adjust the color for h1 in light mode */
+  color: #ff5e62; /* Adjust the color for h1 in light mode */
 }
 
 body.light-mode .app h2 {
@@ -47,7 +47,7 @@ body.light-mode .app h2 {
     font-size: 50px;
     color: #ffd8c5;
     font-weight: 600;
-    border-bottom: 1px solid  #ffd8c5;
+    border-bottom: 1px solid  #ff5e62;
     padding-bottom: 30px;
     animation: neon 3s infinite;
 }
@@ -121,8 +121,8 @@ body.light-mode .app h2 {
 
 
 :root {
-    --shadow-color: #ffffff;
-    --shadow-color-light: white;
+    --shadow-color: #ff5e62;
+    --shadow-color-light: #ff9966;
   }
   
   
@@ -203,7 +203,7 @@ body.light-mode .app h2 {
 
 /* Style classes based on resultClass values */
 .red {
-  color: red;
+  color: #fff;
 }
 
 .orange {
