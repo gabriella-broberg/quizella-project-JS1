@@ -75,7 +75,7 @@ const questions = [
     ],
   },
   {
-    question: "Vilka av följande TV-serier har lila som en framträdande färg i sina titelkrediter?",
+    question: "Vilka av följande TV-serier har lila som en framträdande färg i sina titelkrediter? (flera svar) ",
     type: "checkbox",
     answers: [
       { text: "Breaking Bad", correct: false },
@@ -86,7 +86,7 @@ const questions = [
   },
   {
     question:
-      "Vilka av följande filmer har neonpeach som en framträdande färg i sina scenografi? ",
+      "Vilka av följande filmer har neonpeach som en framträdande färg i sina scenografi? (flera svar)",
     type: "checkbox",
     answers: [
       { text: "La La Land", correct: false },
@@ -97,7 +97,7 @@ const questions = [
   },
   {
     question:
-      "Vilka av följande artister har använt neonrosa som en dominerande färg i sina musikvideor? ",
+      "Vilka av följande artister har använt neonrosa som en dominerande färg i sina musikvideor? (flera svar)",
     type: "checkbox",
     answers: [
       { text: "Katy Perry", correct: true },

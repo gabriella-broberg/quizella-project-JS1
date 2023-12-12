@@ -47,13 +47,13 @@ body.light-mode .app h2 {
 
 
 .app{
-    background: rgba(51, 51, 51, 0.248);
-    backdrop-filter: blur(4px);
+    background: rgba(77, 77, 77, 0.175);
+    backdrop-filter: blur(10px);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
     border-radius: 12px;
-    padding: 30px;
+    padding: 50px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   
 
@@ -201,14 +201,13 @@ body.light-mode .app h2 {
 /* Add styles for the feedback container */
 #feedback-container {
   display: none;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: left;
   background: rgba(255, 255, 255, 0.2);
   width: 100%;
-  padding: 30px;
+  padding: 50px;
   border-radius: 7px;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
   
@@ -217,39 +216,37 @@ body.light-mode .app h2 {
 
 /* Style classes based on resultClass values */
 .red {
-  color: #fff;
+  color: #fb0000;
 }
 
 .orange {
-  color: orange;
+  color: rgb(255, 196, 0);
 }
 
 .green {
-  color: green;
+  color: rgb(30, 177, 30);
 }
 
 
 
 .result-container {
-  font-size: 12px;
+  font-size: 15px;
  
 }
 
 .result-item {
-  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid  #ffffff66;
 
 }
 
 .correct {
   color: green;
-  font-weight: 900;
 
 }
 
 .incorrect {
   color: red;
-  font-weight: 900;
-  
 }
 
 
@@ -259,13 +256,13 @@ body.light-mode .app h2 {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
-    height: 88vh;
+    height: 80vh;
   }
 
   body.light-mode {
     background-image: url("/images/pink-fire.jpg");
     background-size: cover; /* Set background image to cover */
     background-position: right; /* Center the background image */
-    height: 88vh;
+    height: 80vh;
   }
 }
