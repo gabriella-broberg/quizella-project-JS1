@@ -12,7 +12,7 @@ html,body{
 body {
     background-image: url("/images/pink-fire.jpg");
     background-size: auto; /* Set background image to cover */
-    background-position: left; /* Center the background image */
+    background-position: right; /* Center the background image */
     color: #fff;
     
 }
@@ -21,13 +21,13 @@ body {
 body.light-mode {
   background-image: url("/images/pink-fire.jpg");
   background-size: auto; /* Set background image to cover */
-  background-position: left; /* Center the background image */
+  background-position: right; /* Center the background image */
   color: #fff;
   
 }
 
 body.light-mode .app {
-  background: rgba(255, 255, 255, 0.693);
+  background: rgba(255, 255, 255, 0.754);
   color: #2c1624;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   
@@ -47,8 +47,8 @@ body.light-mode .app h2 {
 
 
 .app{
-    background: rgba(18, 0, 4, 0.474);
-    backdrop-filter: blur(6px);
+    background: rgba(51, 51, 51, 0.248);
+    backdrop-filter: blur(2px);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
@@ -91,7 +91,7 @@ body.light-mode .app h2 {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-  margin-left: 90%; /* Push the button to the right */
+  margin-left: 88%; /* Push the button to the right */
 }
 
 #toggle-mode-btn:hover {
@@ -250,4 +250,20 @@ body.light-mode .app h2 {
   color: red;
   font-weight: 900;
   
+}
+
+
+/* Additional styles for mobile devices */
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url("/images/pink-fire.jpg");
+    background-size: cover; /* Set background image to cover */
+    background-position: right; /* Center the background image */
+  }
+
+  body.light-mode {
+    background-image: url("/images/pink-fire.jpg");
+    background-size: cover; /* Set background image to cover */
+    background-position: right; /* Center the background image */
+  }
 }
