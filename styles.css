@@ -5,39 +5,56 @@
     box-sizing: border-box;
 }
 
+html,body{
+  height: 100%;
+ }
+
 body {
     background-image: url("/images/pink-fire.jpg");
+    background-size: auto; /* Set background image to cover */
+    background-position: right; /* Center the background image */
     color: #fff;
     
 }
 
 
+body.light-mode {
+  background-image: url("/images/pink-fire.jpg");
+  background-size: auto; /* Set background image to cover */
+  background-position: right; /* Center the background image */
+  color: #fff;
+  
+}
+
 body.light-mode .app {
-  background: rgba(255, 255, 255, 0.6);
-  color: #751150;
-  /* Add any other light mode styles for .app here */
+  background: rgba(255, 255, 255, 0.844);
+  color: #2c1624;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  
+ 
 }
 
 body.light-mode .app h1 {
-  color: #ff5e62; /* Adjust the color for h1 in light mode */
+  color: #ff02a2; /* Adjust the color for h1 in light mode */
+  border-bottom: 10px double  #fdfdfd66;
 }
 
 body.light-mode .app h2 {
-  color: #751150 /* Adjust the color for h2 in light mode */
+  color: #1f000d; /* Adjust the color for h2 in light mode */
 }
 
 
 
 
 .app{
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(63, 63, 63, 0.3);
     backdrop-filter: blur(6px);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
-    border-radius: 9px;
+    border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   
 
 }
@@ -45,11 +62,11 @@ body.light-mode .app h2 {
 
 .app h1{
     font-size: 50px;
-    color: #ffd8c5;
+    color: #ff5e62;
     font-weight: 600;
-    border-bottom: 1px solid  #ff5e62;
-    padding-bottom: 30px;
-    animation: neon 3s infinite;
+    border-bottom: 10px double  #1f000d66;
+    padding-bottom: 20px;
+    animation: neon 1.5s infinite;
 }
 
 .quiz {
@@ -67,14 +84,14 @@ body.light-mode .app h2 {
 
 
 #toggle-mode-btn {
-  background: linear-gradient(to right, #ff9966, #ff5e62);
+  background: linear-gradient(to right, #ff996697, #ff5e618d);
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 20px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-  margin-left: 70%; /* Push the button to the right */
+  margin-left: 90%; /* Push the button to the right */
 }
 
 #toggle-mode-btn:hover {
@@ -85,15 +102,12 @@ body.light-mode .app h2 {
 
 
 
-#next-btn:hover {
-    background:#590b40;
-    color: #fff;
-}
+
 
 
 
 #next-btn {
-    background: #751150;
+    background: #ff5e6192;
     color: #fff;
     font-weight: 500;
     width: 150px;
@@ -106,12 +120,16 @@ body.light-mode .app h2 {
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-
+#next-btn:hover {
+  background:#ff9966;
+  color: #fff;
+}
 
 
 #answerCheckbox {
     display: flex;
     flex-direction: column;
+    
   }
 
   #answerCheckbox label {
@@ -121,8 +139,8 @@ body.light-mode .app h2 {
 
 
 :root {
-    --shadow-color: #ff5e62;
-    --shadow-color-light: #ff9966;
+    --shadow-color: #ff80e5;
+    --shadow-color-light: white;
   }
   
   
@@ -176,7 +194,7 @@ body.light-mode .app h2 {
 }
 
 .checkbox:checked + span::before {
-  background-color: #751150; /* Color when checkbox is checked */
+  background-color: #ff5e62; /* Color when checkbox is checked */
   border-color: #fff; /* Border color when checkbox is checked */
   color: #fff; /* Color of the checkmark */
   line-height: 20px; /* Should match the height of the checkbox */
@@ -228,9 +246,12 @@ body.light-mode .app h2 {
 
 .correct {
   color: green;
+  font-weight: 900;
 
 }
 
 .incorrect {
   color: red;
+  font-weight: 900;
+  
 }

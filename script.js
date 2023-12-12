@@ -108,6 +108,20 @@ const questions = [
   },
 ];
 
+
+// JavaScript code to toggle between light and dark mode
+const toggleModeBtn = document.getElementById("toggle-mode-btn");
+const body = document.body;
+
+toggleModeBtn.addEventListener("click", () => {
+  body.classList.toggle("light-mode");
+
+  // Toggle the icon and text content of the button
+  const currentMode = body.classList.contains("light-mode") ? { icon: "moon", text: "" } : { icon: "sun", text: "" };
+  toggleModeBtn.innerHTML = `<i class="fas fa-${currentMode.icon}"></i> ${currentMode.text}`;
+});
+
+
 // Get the HTML elements representing the quiz components
 const questionElement = document.getElementById("question");
 const answerCheckboxes = document.getElementById("answer-checkboxes");
@@ -307,13 +321,5 @@ nextButton.addEventListener("click", () => {
 
 startQuiz();
 
-// Event listener for the dark/light mode toggle button
-const toggleModeBtn = document.getElementById("toggle-mode-btn");
-const body = document.body;
 
-toggleModeBtn.addEventListener("click", toggleMode);
 
-// Function to toggle between dark and light mode
-function toggleMode() {
-  body.classList.toggle("light-mode");
-}
