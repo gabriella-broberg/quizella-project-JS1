@@ -5,34 +5,68 @@
     box-sizing: border-box;
 }
 
+html,body{
+  height: 100%;
+ }
+
 body {
     background-image: url("/images/pink-fire.jpg");
+    background-size: auto; /* Set background image to cover */
+    background-position: right; /* Center the background image */
     color: #fff;
     
 }
 
 
+body.light-mode {
+  background-image: url("/images/pink-fire.jpg");
+  background-size: auto; /* Set background image to cover */
+  background-position: right; /* Center the background image */
+  color: #fff;
+  
+}
+
+body.light-mode .app {
+  background: rgba(255, 255, 255, 0.844);
+  color: #2c1624;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  
+ 
+}
+
+body.light-mode .app h1 {
+  color: #ff02a2; /* Adjust the color for h1 in light mode */
+  border-bottom: 10px double  #fdfdfd66;
+}
+
+body.light-mode .app h2 {
+  color: #1f000d; /* Adjust the color for h2 in light mode */
+}
+
+
+
 
 .app{
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(63, 63, 63, 0.3);
     backdrop-filter: blur(6px);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  
 
 }
 
 
 .app h1{
     font-size: 50px;
-    color: #fff;
+    color: #ff5e62;
     font-weight: 600;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 30px;
-    animation: neon 3s infinite;
+    border-bottom: 10px double  #1f000d66;
+    padding-bottom: 20px;
+    animation: neon 1.5s infinite;
 }
 
 .quiz {
@@ -44,34 +78,36 @@ body {
     font-size: 18px;
     color: #fff;
     font-weight: 600;
+    padding-bottom: 20px;
 }
 
-.btn {
-    background: #fff;
-    color: #222;
-    font-weight: 500;
-    width: 100%;
-    border: 1px solid #222;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
 
+
+#toggle-mode-btn {
+  background: linear-gradient(to right, #ff996697, #ff5e618d);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-left: 90%; /* Push the button to the right */
 }
 
-#next-btn:hover {
-    background: #222;
-    color: #fff;
+#toggle-mode-btn:hover {
+  background: linear-gradient(to right, #ff5e62, #ff9966);
 }
 
-.btn:disabled{
-    cursor: no-drop;
-}
+
+
+
+
+
+
+
 
 #next-btn {
-    background: #751150;
+    background: #ff5e6192;
     color: #fff;
     font-weight: 500;
     width: 150px;
@@ -81,11 +117,19 @@ body {
     border-radius: 4px;
     cursor: pointer;
     display: none;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+#next-btn:hover {
+  background:#ff9966;
+  color: #fff;
+}
+
 
 #answerCheckbox {
     display: flex;
     flex-direction: column;
+    
   }
 
   #answerCheckbox label {
@@ -95,7 +139,7 @@ body {
 
 
 :root {
-    --shadow-color: #FF9E9E;
+    --shadow-color: #ff80e5;
     --shadow-color-light: white;
   }
   
@@ -118,3 +162,96 @@ body {
     }
   }
 
+/* Custom Checkbox Styling */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  z-index: 2; /* Move the default checkbox behind the custom one */
+  margin-top: 8px;
+  margin-left: 3px;
+}
+
+.checkbox + span {
+  position: relative;
+  padding-left: 30px; /* Space for the custom checkbox */
+  display: inline-block;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.checkbox + span::before {
+  content: ""; /* Unicode checkmark character */
+  position: absolute;
+  left: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 20px; /* Size of the custom checkbox */
+  height: 20px; /* Size of the custom checkbox */
+  background-color: #fff; /* Color of the checkbox */
+  border: 2px solid #751150; /* Border color of the checkbox */
+  border-radius: 4px; /* Adjust as needed */
+  box-sizing: border-box;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, line-height 0.3s; /* Added transition for the neon effect */
+}
+
+.checkbox:checked + span::before {
+  background-color: #ff5e62; /* Color when checkbox is checked */
+  border-color: #fff; /* Border color when checkbox is checked */
+  color: #fff; /* Color of the checkmark */
+  line-height: 20px; /* Should match the height of the checkbox */
+  box-shadow: 0 0 10px #ff80e5, 0 0 20px #ff80e5, 0 0 30px #ff80e5; /* Neon glow effect */
+}
+
+
+/* Add styles for the feedback container */
+#feedback-container {
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
+  
+
+}
+
+/* Style classes based on resultClass values */
+.red {
+  color: #fff;
+}
+
+.orange {
+  color: orange;
+}
+
+.green {
+  color: green;
+}
+
+
+
+.result-container {
+  font-size: 12px;
+ 
+}
+
+.result-item {
+  margin-bottom: 10px;
+
+}
+
+.correct {
+  color: green;
+  font-weight: 900;
+
+}
+
+.incorrect {
+  color: red;
+  font-weight: 900;
+  
+}
