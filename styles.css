@@ -27,7 +27,7 @@ body.light-mode {
 }
 
 body.light-mode .app {
-  background: rgba(255, 255, 255, 0.754);
+  background: rgb(255, 255, 255);
   color: #2c1624;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   
@@ -35,8 +35,8 @@ body.light-mode .app {
 }
 
 body.light-mode .app h1 {
-  color: #ff02a2; /* Adjust the color for h1 in light mode */
-  border-bottom: 10px double  #fdfdfd66;
+  color: #ff5e62; /* Adjust the color for h1 in light mode */
+  border-bottom: 10px double  #1f000d;
 }
 
 body.light-mode .app h2 {
@@ -61,7 +61,8 @@ body.light-mode .app h2 {
 
 
 .app h1{
-    font-size: 50px;
+  font-family: 'Zapfino', cursive;
+    font-size: 40px;
     color: #ff5e62;
     font-weight: 600;
     border-bottom: 10px double  #1f000d66;
@@ -103,7 +104,7 @@ body.light-mode .app h2 {
 
 
 #next-btn {
-    background: #ff5e61a9;
+    background: #ff5e61;
     color: #fff;
     font-weight: 500;
     width: 150px;
