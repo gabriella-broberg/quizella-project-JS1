@@ -47,7 +47,7 @@ body.light-mode .app h2 {
 
 
 .app{
-    background: rgba(63, 63, 63, 0.3);
+    background: rgba(0, 0, 0, 0.41);
     backdrop-filter: blur(6px);
     width: 90%;
     max-width: 600px;
