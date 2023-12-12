@@ -4,7 +4,7 @@ const questions = [
       "I filmen 'Unbreakable' spelar Samuel L. Jackson en karaktär med sköra ben och smeknamnet 'Mr. Glass'. Vilken färg är ofta förknippad med hans karaktär?",
     type: "multipleChoice",
     answers: [
-      { text: "Neon Pink", correct: false },
+      { text: "Neonrosa", correct: false },
       { text: "Lila", correct: true },
       { text: "Orange", correct: false },
       { text: "Svart", correct: false },
