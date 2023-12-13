@@ -49,6 +49,7 @@ body.light-mode .app h2 {
 .app{
     background: rgba(77, 77, 77, 0.175);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari */
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
