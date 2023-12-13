@@ -47,6 +47,7 @@ body.light-mode .app h2 {
 
 
 .app{
+   transform: translate3d(0, 0, 0);
     background: rgba(77, 77, 77, 0.175);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari */
