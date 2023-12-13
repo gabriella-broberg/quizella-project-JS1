@@ -35,8 +35,8 @@ body.light-mode .app {
 }
 
 body.light-mode .app h1 {
-  color: #ff5e62; /* Adjust the color for h1 in light mode */
-  border-bottom: 10px double  #1f000d;
+  color: #fff; /* Adjust the color for h1 in light mode */
+  border-bottom: 6px double  #1f000d;
 }
 
 body.light-mode .app h2 {
@@ -47,13 +47,13 @@ body.light-mode .app h2 {
 
 
 .app{
-   transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
     background: rgba(77, 77, 77, 0.175);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari */
     width: 90%;
     max-width: 600px;
-    margin: 100px auto 0;
+    margin: 70px auto 0;
     border-radius: 12px;
     padding: 50px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
@@ -63,14 +63,13 @@ body.light-mode .app h2 {
 
 
 .app h1{
-  font-family: 'Zapfino', cursive;
-    font-size: 40px;
-    color: #ff5e62;
+  font-family: 'luminari', cursive;
+    font-size: 50px;
+    color: #37002c;
     font-weight: 600;
-    border-bottom: 10px double  #1f000d66;
-    padding-bottom: 20px;
+    border-bottom: 6px double  #1f000d66;
+    padding-bottom: 15px;
     animation: neon 1.5s infinite;
-
 }
 
 .quiz {
@@ -137,44 +136,53 @@ body.light-mode .app h2 {
   }
 
 
-  @keyframes neon {
-    0% {
-      text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
-      0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
-      -webkit-text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
-      0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
-      /* ... Additional properties ... */
-    }
-    50% {
-      text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
-      0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
-      -webkit-text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
-      0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
-      /* ... Additional properties ... */
-    }
-    100% {
-      text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
-      0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
-      -webkit-text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
-      0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
-      0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
-      /* ... Additional properties ... */
-    }
-  }
-  
-  
-  :root {
-    --shadow-color: #ff80e5;
-    --shadow-color-light: white;
-    --shadow-color-safari: #ff5e62; /* Adjusted color for Safari */
-  }
-  
 
+:root {
+    --shadow-color: #ff9966;
+    --shadow-color-light: #ff80e5;
+  }
+  
+  
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 2.5px var(--shadow-color-light),
+      0 0 5px var(--shadow-color-light),
+      0 0 7.5px var(--shadow-color-light),
+      0 0 10px var(--shadow-color),
+      0 0 15px var(--shadow-color),
+      0 0 20px var(--shadow-color),
+      0 0 25px var(--shadow-color),
+      0 0 35px var(--shadow-color),
+      0 0 50px var(--shadow-color),
+      0 0 100px var(--shadow-color);
+  }
+  50% {
+    text-shadow: 0 0 2.5px var(--shadow-color-light),
+      0 0 5px var(--shadow-color-light),
+      0 0 7.5px var(--shadow-color-light),
+      0 0 12.5px var(--shadow-color),
+      0 0 20px var(--shadow-color),
+      0 0 30px var(--shadow-color),
+      0 0 40px var(--shadow-color),
+      0 0 55px var(--shadow-color),
+      0 0 75px var(--shadow-color),
+      0 0 150px var(--shadow-color);
+  }
+  100% {
+    text-shadow: 0 0 2.5px var(--shadow-color-light),
+      0 0 5px var(--shadow-color-light),
+      0 0 7.5px var(--shadow-color-light),
+      0 0 10px var(--shadow-color),
+      0 0 15px var(--shadow-color),
+      0 0 20px var(--shadow-color),
+      0 0 25px var(--shadow-color),
+      0 0 35px var(--shadow-color),
+      0 0 50px var(--shadow-color),
+      0 0 100px var(--shadow-color);
+  }
+}
+
+  
 
 /* Custom Checkbox Styling */
 .checkbox {
