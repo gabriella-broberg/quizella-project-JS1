@@ -35,7 +35,7 @@ body.light-mode .app {
 }
 
 body.light-mode .app h1 {
-  color: #fff; /* Adjust the color for h1 in light mode */
+  color: #ffeff9; /* Adjust the color for h1 in light mode */
   border-bottom: 6px double  #1f000d;
 }
 
@@ -63,13 +63,13 @@ body.light-mode .app h2 {
 
 
 .app h1{
-  font-family: 'luminari', poppins;
+  font-family: 'luminari', sans serif;
     font-size: 50px;
     color: #37002c;
     font-weight: 600;
     border-bottom: 6px double  #1f000d66;
     padding-bottom: 15px;
-    animation: neon 1.5s infinite;
+    animation: neon 4s infinite;
 }
 
 .quiz {
@@ -165,8 +165,7 @@ body.light-mode .app h2 {
       0 0 30px var(--shadow-color),
       0 0 40px var(--shadow-color),
       0 0 55px var(--shadow-color),
-      0 0 75px var(--shadow-color),
-      0 0 150px var(--shadow-color);
+
   }
   100% {
     text-shadow: 0 0 2.5px var(--shadow-color-light),
@@ -177,8 +176,8 @@ body.light-mode .app h2 {
       0 0 20px var(--shadow-color),
       0 0 25px var(--shadow-color),
       0 0 35px var(--shadow-color),
-      0 0 50px var(--shadow-color),
-      0 0 100px var(--shadow-color);
+   
+     
   }
 }
 
@@ -293,8 +292,10 @@ body.light-mode .app h2 {
   }
 
   .app{
-    background: rgba(0, 0, 0, 0.413);
+    transform: translate3d(0, 0, 0);
+    background: rgba(77, 77, 77, 0.175);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari */
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
